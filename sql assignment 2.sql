@@ -56,10 +56,10 @@ INSERT INTO employees (emp_id, emp_name, gender, age, hire_date, designation, de
 (5030, 'Sara Iyer', 'F', 28, '2019-11-20', 'Project Manager', 5, 1, 90000);
 SELECT DISTINCT salary FROM employees;
 SELECT age AS Employee_Age, salary AS Employee_Salary FROM employees;
-select * from employees where salary > 50000 and hire_date < 2016-01-01;
+select * from employees where salary > 50000 and hire_date <2016-01-01 limit 0, 1000;
 update employees set designation = 'Data Scientist' where designation IS NULL;
-select *from employees order by department_id ASc;
-SELECT *FROM EMPLOYEES order by salary desc;
+select *from employees order by department_id ASc, salary desc;
+
 SELECT * FROM employees WHERE YEAR(hire_date) = 2018 LIMIT 5;
 -- Sum of all salaries in the Finance department
 SELECT SUM(salary) AS total_finance_salary FROM employees;
@@ -70,7 +70,8 @@ SELECT department_id, COUNT(*) AS total_employees FROM employees GROUP BY depart
 SELECT location_id, AVG(age) AS avg_female_age FROM employees WHERE gender = 'F' GROUP BY location_id HAVING AVG(age) < 30;
 SELECT emp_name,designation,department_name 
 FROM employees
-INNER JOIN departments ON department_id = department_idcount0, 1000;
+SELECT e.emp_name,e.designation,d.department_name 
+FROM Employees e iNNER JOIN Departments d ON e.department_id = d.department_id;
 SELECT d.department_name, COUNT(e.employee_id) AS total_employees 
 FROM departments d 
 LEFT JOIN employees e ON d.department_id = e.department_id 
